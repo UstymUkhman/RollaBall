@@ -40,7 +40,7 @@ protected:
 		float MoveForce = 500.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		float JumpImpulse = 1000.0f;
+		float JumpImpulse = 500.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int32 MaxJumpCount = 1;
@@ -50,6 +50,15 @@ private:
 	void MoveForward(float Value);
 	void MoveRight(float Value);
 	void Jump();
+
+	UFUNCTION()
+	void OnHit(
+		UPrimitiveComponent* HitComponent,
+		AActor* OtherActor,
+		UPrimitiveComponent* OtherComp,
+		FVector NormalImpulse,
+		const FHitResult& Hit
+	);
 
 	int32 JumpCount = 0;
 };
