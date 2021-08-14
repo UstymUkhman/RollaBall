@@ -110,7 +110,7 @@ void ARollaBallPlayer::OnHit
 	const float HitDirection = Hit.Normal.Z;
 	if (HitDirection > 0)
 	{
-		// On screen debug message:
+		// Onscreen debug message:
 		/* GEngine->AddOnScreenDebugMessage(-1, 0.1f, FColor::Black,
 			FString::Printf(TEXT("Z Normal: %f"),HitDirection)
 		); */

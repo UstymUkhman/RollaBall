@@ -1,5 +1,6 @@
 #include "RollaBallItemBase.h"
 #include "RollaBall/Game/RollaBallPlayer.h"
+#include "RollaBall/Game/RollaBallGameModeBase.h"
 
 // Sets default values
 ARollaBallItemBase::ARollaBallItemBase()
@@ -29,7 +30,7 @@ void ARollaBallItemBase::OverlapBegin(
 	const FHitResult& SweepResult
 )
 {
-	if (Cast<ARollaBallPlayer>(OtherActor) != nullptr)
+	if (Cast<ARollaBallPlayer>(OtherActor))
 	{
 		Collected();
 	}
@@ -37,5 +38,10 @@ void ARollaBallItemBase::OverlapBegin(
 
 void ARollaBallItemBase::Collected_Implementation()
 {
-	/// TODO: Implement collecting logic.
+	ARollaBallGameModeBase* GameMode = Cast<ARollaBallGameModeBase>(GetWorld()->GetAuthGameMode());
+
+	if (GameMode)
+	{
+		GameMode->ItemCollected();
+	}
 }
